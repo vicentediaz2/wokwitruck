@@ -20,3 +20,18 @@ Si usas otros pines, cambia `SS_PIN` y `RST_PIN` en `src/main.cpp`.
 
 - Compilar/monitor: `pio run -t upload -t monitor` (o solo `pio device monitor` si ya cargaste el firmware)
 - En Wokwi: abre el proyecto y usa `diagram.json` + `wokwi.toml` + `sketch.ino` (Wokwi compila el sketch).
+
+## Firebase (Realtime Database)
+
+Este proyecto envÃ­a un registro a **Firebase RTDB** en la ruta `/registros` cada vez que se lee una tarjeta.
+
+1. Crea un proyecto en Firebase.
+2. Habilita **Realtime Database** y copia tu `databaseURL`.
+3. Habilita **Authentication â†’ Email/Password** y crea un usuario (o usa uno existente).
+4. Crea tu archivo de secretos:
+   - Copia `include/secrets.example.h` a `include/secrets.h`
+   - Completa `FIREBASE_API_KEY`, `FIREBASE_DATABASE_URL`, `FIREBASE_USER_EMAIL`, `FIREBASE_USER_PASSWORD`
+
+Notas:
+- `include/secrets.h` estÃ¡ ignorado por git.
+- En simulaciÃ³n (Wokwi) puede que no haya conectividad real hacia Firebase; en hardware real con WiFi sÃ­.
